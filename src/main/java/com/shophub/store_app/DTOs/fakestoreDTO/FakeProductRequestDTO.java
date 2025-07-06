@@ -12,10 +12,10 @@ public class FakeProductRequestDTO {
     private String image;
 
     public void copy(ProductRequestDTO requestDTO) {
-        this.title=requestDTO.getProductName();
+        this.title=requestDTO.getName();
         this.price= requestDTO.getPrice();
         this.description=requestDTO.getDescription();
-        this.category= requestDTO.getCategory();
+        this.category= requestDTO.getCategory().getName();
         this.image=requestDTO.getImageUrl();
     }
 }

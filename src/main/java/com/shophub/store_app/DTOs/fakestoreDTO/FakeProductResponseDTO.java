@@ -1,5 +1,6 @@
 package com.shophub.store_app.DTOs.fakestoreDTO;
 
+import com.shophub.store_app.DTOs.storeDTO.CategoryResponseDTO;
 import com.shophub.store_app.DTOs.storeDTO.ProductRequestDTO;
 import com.shophub.store_app.DTOs.storeDTO.ProductResponseDTO;
 import lombok.Data;
@@ -14,11 +15,13 @@ public class FakeProductResponseDTO {
     private String image;
 
     public ProductResponseDTO copy(ProductResponseDTO responseDTO) {
-        responseDTO.setProductName(this.getTitle());
-        responseDTO.setProductId(this.getId());
+        responseDTO.setName(this.getTitle());
+        responseDTO.setId(this.getId());
         responseDTO.setPrice(this.getPrice());
         responseDTO.setDescription(this.getDescription());
-        responseDTO.setCategory(this.getCategory());
+        CategoryResponseDTO categoryResponseDTO=new CategoryResponseDTO();
+        categoryResponseDTO.setName(this.getCategory());
+        responseDTO.setCategory(categoryResponseDTO);
         responseDTO.setImageUrl(this.getImage());
         return responseDTO;
     }

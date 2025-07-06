@@ -38,9 +38,9 @@ public class FakeStoreProductService implements ProductService{
     public ProductResponseDTOs getAllProduct() {
         FakeProductResponseDTO[] fakeProducts=restTemplate.getForObject("https://fakestoreapi.com/products",FakeProductResponseDTO[].class);
         ProductResponseDTOs responseDTOs=new ProductResponseDTOs();
-        responseDTOs.setResponseDTO(new ArrayList<>());
+        responseDTOs.setProducts(new ArrayList<>());
         Arrays.stream(fakeProducts).forEach((fakeProduct)->{
-            responseDTOs.getResponseDTO().add(fakeProduct.copy(new ProductResponseDTO()));
+            responseDTOs.getProducts().add(fakeProduct.copy(new ProductResponseDTO()));
         });
         return responseDTOs;
     }
