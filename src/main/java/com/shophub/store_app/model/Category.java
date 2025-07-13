@@ -13,6 +13,8 @@ import java.util.List;
 public class Category extends BaseModel {
     private String name;
 
+    private String level;
+
     @OneToMany(mappedBy = "category")
     @JsonBackReference
     private List<Product> products;
