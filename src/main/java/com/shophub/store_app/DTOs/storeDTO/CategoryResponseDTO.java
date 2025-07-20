@@ -2,10 +2,12 @@ package com.shophub.store_app.DTOs.storeDTO;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class CategoryResponseDTO {
     private Long id;
     private String name;
-    private Long createdAt;
-    private Long updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 }

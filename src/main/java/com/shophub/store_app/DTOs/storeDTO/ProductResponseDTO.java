@@ -4,6 +4,8 @@ import com.shophub.store_app.model.Category;
 import com.shophub.store_app.model.Product;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ProductResponseDTO {
     private Long id;
@@ -12,8 +14,8 @@ public class ProductResponseDTO {
     private  String description;
     private CategoryResponseDTO category;
     private String imageUrl;
-    private Long createdAt;
-    private Long updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
     public static ProductResponseDTO convertToProductResponseDTO(Product product) {
         ProductResponseDTO responseDTO=new ProductResponseDTO();

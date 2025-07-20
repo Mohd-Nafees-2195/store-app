@@ -1,10 +1,7 @@
 package com.shophub.store_app.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -14,7 +11,7 @@ public class Product extends BaseModel {
     private double price;
     private  String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JsonManagedReference
     private Category category;
     private String imageUrl;

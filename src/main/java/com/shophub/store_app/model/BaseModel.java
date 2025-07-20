@@ -6,13 +6,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @MappedSuperclass
 public class BaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long createdAt;
-    private Long updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
     private Boolean isDeleted;
 }

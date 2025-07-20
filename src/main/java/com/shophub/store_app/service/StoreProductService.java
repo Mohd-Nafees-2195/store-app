@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,16 +29,16 @@ public class StoreProductService implements ProductService{
         Optional<Category> categoryDB=categoryRepository.findByName(request.getCategory().getName());
         Product product=CreateProductRequestDTO.convertToProduct(request);
         if(categoryDB.isEmpty()){
-            product.getCategory().setCreatedAt(Instant.now().toEpochMilli());
-            product.getCategory().setUpdatedAt(Instant.now().toEpochMilli());
+            product.getCategory().setCreatedAt(new Date());
+            product.getCategory().setUpdatedAt(new Date());
             product.getCategory().setIsDeleted(false);
             Category category=categoryRepository.save(product.getCategory());
             product.setCategory(category);
         }else{
             product.setCategory(categoryDB.get());
         }
-        product.setCreatedAt(Instant.now().toEpochMilli());
-        product.setUpdatedAt(Instant.now().toEpochMilli());
+        product.setCreatedAt(new Date());
+        product.setUpdatedAt(new Date());
         product.setIsDeleted(false);
         Product response=productRepository.save(product);
         return CreateProductResponseDTO.convertToProductResponseDTO(response);
@@ -83,8 +84,8 @@ public class StoreProductService implements ProductService{
             if(dbCategory.isEmpty()){
                 Category newCategory=new Category();
                 newCategory.setName(request.getCategory().getName());
-                newCategory.setCreatedAt(Instant.now().toEpochMilli());
-                newCategory.setUpdatedAt(Instant.now().toEpochMilli());
+                newCategory.setCreatedAt(new Date());
+                newCategory.setUpdatedAt(new Date());
                 newCategory.setIsDeleted(false);
                 newCategory=categoryRepository.save(newCategory);
                 dbProduct.get().setCategory(newCategory);
